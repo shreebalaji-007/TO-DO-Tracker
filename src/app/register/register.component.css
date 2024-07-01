@@ -1,0 +1,36 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  .mdc-card__actions {
+    padding: 15px;
+}
+  .full-width {
+    width: 100%;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .mat-mdc-card-header {
+    padding: 15px 20px;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.register-image{
+    width: 85%;
+}

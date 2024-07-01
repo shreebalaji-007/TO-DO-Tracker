@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{ data.id ? 'Edit Task' : 'Add Task' }}</h2>
+<mat-dialog-content>
+  <form #taskForm="ngForm" (ngSubmit)="saveTask()">
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="data.name" name="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Due Date" [(ngModel)]="data.dueDate" name="dueDate" [min]="todayDate" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" [(ngModel)]="data.description" name="description" required></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select [(ngModel)]="data.priority" name="priority" required>
+      <mat-option value="LOW">LOW</mat-option>
+      <mat-option value="MEDIUM">MEDIUM</mat-option>
+      <mat-option value="HIGH">HIGH</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="data.status" name="status" required>
+      <mat-option value="PENDING">PENDING</mat-option>
+      <mat-option value="IN-PROGRESS">IN-PROGRESS</mat-option>
+      <mat-option value="COMPLETE">COMPLETE</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="taskForm.invalid" (click)="saveTask()" mat-dialog-close cdkFocusInitial>{{ data.id ? 'Update' : 'Add' }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,70 @@
+.task-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 80vh;
+  }
+    
+  mat-card {
+    max-width: 80%;
+    width: 100%;
+  }
+
+  .mat-mdc-card-header {
+    padding: 15px 20px;
+}
+
+.heading {
+  margin-bottom: 26px;
+}
+  
+.mdc-card__actions {
+    padding: 15px;
+}
+
+  .task-name {
+    width: 20%;
+  }
+  .task-duedate {
+    width: 10%;
+  }
+  .task-description {
+    width: 35%;
+  }
+  .task-priority {
+    width: 10%;
+  }  
+  .task-status {
+    width: 10%;
+  }  
+  .task-actions {
+    width: 15%;
+    text-align: center;
+  }
+
+  th.task-name {
+    font-weight: 800;
+  }
+  th.task-duedate {
+    font-weight: 800;
+  }
+  th.task-description {
+    font-weight: 800;
+  }
+  th.task-priority {
+    font-weight: 800;
+  }  
+  th.task-status {
+    font-weight: 800;
+  }  
+  th.task-actions {
+    font-weight: 800;
+  }
+
+  .search-bar {
+    position: absolute;
+    right: 15px;
+}
+input.search-input {
+  padding: 5px;
+}

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{ data.id ? 'Edit Todo' : 'Add Todo' }}</h2>
+<mat-dialog-content>
+  <form #todoForm="ngForm" (ngSubmit)="saveTodo()">
+    <mat-form-field>
+      <input matInput placeholder="Title" name="title" [(ngModel)]="data.title" required>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" name="description" [(ngModel)]="data.description" required></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="todoForm.invalid" (click)="saveTodo()" mat-dialog-close cdkFocusInitial>{{ data.id ? 'Update' : 'Add' }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+<div class="register-container">
+  <div class="float-left">
+    <img class="register-image" src="../../assets/register.gif">
+  </div>
+  <div class="float-right">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #registerForm="ngForm" class="register-form" (ngSubmit)="register()">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+            <!-- Display error message if username field is empty -->
+            <mat-error
+              *ngIf="registerForm.controls['username']?.invalid && (registerForm.controls['username']?.dirty || registerForm.controls['username']?.touched)">
+              Username is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              title="Please enter a vaild password">
+            <!-- Display error message if password field is empty -->
+            <mat-error
+              *ngIf="registerForm.controls['password']?.invalid && (registerForm.controls['password']?.dirty || registerForm.controls['password']?.touched)">
+              Please enter a vaild password
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email" required
+              pattern="^[^0-9][a-zA-Z0-9._%+\-\@]*@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$"
+              title="Please enter a valid email address">
+            <!-- Display error message if email field is invalid -->
+            <mat-error
+              *ngIf="registerForm.controls['email']?.invalid && (registerForm.controls['email']?.dirty || registerForm.controls['email']?.touched)">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="registerForm.invalid" type="submit">Register</button>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        Already have an account?<button mat-button routerLink="/login"><mat-icon>login</mat-icon> Login</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

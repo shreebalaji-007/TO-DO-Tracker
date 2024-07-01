@@ -1,0 +1,35 @@
+<div class="login-container">
+  <div class="float-left">
+    <img class="login-image" src="../../assets/login2.gif">
+  </div>
+  <div class="float-right">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #loginForm="ngForm" class="login-form" (ngSubmit)="login()">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+            <!-- Display error message if username field is empty -->
+            <mat-error *ngIf="loginForm.controls['username']?.invalid && loginForm.controls['username']?.touched">
+              Username is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+            <!-- Display error message if password field is empty -->
+            <mat-error *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">Login</button>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        Don't have an account?<button mat-button routerLink="/register"><mat-icon>app_registration</mat-icon>
+          Register</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

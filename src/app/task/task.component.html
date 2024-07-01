@@ -1,0 +1,70 @@
+<div class="task-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="heading">Task List</mat-card-title>
+      <mat-card-title>{{ (todo | async)?.title }}</mat-card-title>
+      <mat-card-subtitle>{{ (todo | async)?.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" title="Add new Task" (click)="addTaskDialog()">+ Add Task</button>
+      <div class="search-bar">
+        <input class="search-input" type="text" placeholder="Search by name" [(ngModel)]="searchQuery">        
+        <button mat-button color="primary" (click)="search()">Search</button>
+        <button mat-button color="warn" (click)="reset()">Reset</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-content>
+      <table mat-table [dataSource]="filteredTasks" class="mat-elevation-z8">
+        
+        <!-- Task Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="task-name">Name</th>
+          <td mat-cell *matCellDef="let task" class="task-name">{{ task.name }}</td>
+        </ng-container>
+
+        <!-- Task Description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef class="task-description">Description</th>
+          <td mat-cell *matCellDef="let task" class="task-description">{{ task.description }}</td>
+        </ng-container>
+
+        <!-- Task Due Date Column -->
+        <ng-container matColumnDef="dueDate">
+          <th mat-header-cell *matHeaderCellDef class="task-duedate">Due Date</th>
+          <td mat-cell *matCellDef="let task" class="task-duedate">{{ task.dueDate | date:'M/d/yyyy' }}</td>
+        </ng-container>
+
+        <!-- Task Priority Column -->
+        <ng-container matColumnDef="priority">
+          <th mat-header-cell *matHeaderCellDef class="task-priority">Priority</th>
+          <td mat-cell *matCellDef="let task" class="task-priority">{{ task.priority }}</td>
+        </ng-container>
+
+        <!-- Task Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="task-status">Status</th>
+          <td mat-cell *matCellDef="let task" class="task-status">{{ task.status }}</td>
+        </ng-container>
+
+        <!-- Action Buttons Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="task-actions">Actions</th>
+          <td mat-cell *matCellDef="let task" class="task-actions">
+            <button mat-icon-button color="primary" title="Edit Task" (click)="editTaskDialog(task)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" title="Delete Task" (click)="deleteTask(task)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+    <mat-card-actions>
+      <a routerLink="/todo" color="primary" routerLinkActive="active">Back to Todos</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

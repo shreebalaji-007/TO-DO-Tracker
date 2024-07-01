@@ -1,0 +1,52 @@
+.todo-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 80vh;
+  }
+    
+  mat-card {
+    max-width: 50%;
+    width: 100%;
+  }
+
+  .mat-mdc-card-header {
+    padding: 15px 20px;
+}
+  
+.mdc-card__actions {
+    padding: 15px;
+}
+
+  .todo-title {
+    width: 30%;
+  }
+  
+  .todo-description {
+    width: 45%;
+  }
+  
+  .todo-actions {
+    width: 25%;
+    text-align: center;
+  }
+
+  th.todo-title{
+    font-weight: 800;
+  }
+  
+  th.todo-description{
+    font-weight: 800;
+  }
+  
+  th.todo-actions{
+    font-weight: 800;
+  }
+
+  .search-bar {
+    position: absolute;
+    right: 15px;
+}
+input.search-input {
+  padding: 5px;
+}

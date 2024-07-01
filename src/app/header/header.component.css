@@ -1,0 +1,11 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  .mat-toolbar.mat-primary a{
+    color: white;
+    font-size: 16px;
+  font-weight: 400;
+}
+a.site-title {
+  text-decoration: none;
+}
